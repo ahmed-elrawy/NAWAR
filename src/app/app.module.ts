@@ -12,6 +12,7 @@ import { ItemDetailsComponent } from './modules/app/item-details/item-details.co
 import { ItemsComponent } from './modules/app/items/items.component';
 import { CreateItemComponent } from './modules/app/create-item/create-item.component';
 import { HomeComponent } from './modules/app/home/home.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HomeComponent } from './modules/app/home/home.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
