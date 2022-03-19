@@ -13,6 +13,8 @@ import { ItemsComponent } from './modules/app/items/items.component';
 import { CreateItemComponent } from './modules/app/create-item/create-item.component';
 import { HomeComponent } from './modules/app/home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
     
   ],
   providers: [],
