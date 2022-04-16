@@ -36,7 +36,6 @@ export class RegisterComponent implements OnInit {
 
     console.log(body)
     this.auth.signIn(body).subscribe(res => {
-      console.log(res)
 
       this.auth.weatherData.subscribe( res => {
         console.log(res)

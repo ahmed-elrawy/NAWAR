@@ -16,7 +16,7 @@ export class AuthService {
   logIn(body:any):Observable<any> {
     return this.http.post<any>(`http://localhost:5000/api/auth/login`,body).pipe(
       tap((data) => {
-        localStorage.setItem("user", JSON.stringify(data));
+        localStorage.setItem("state", JSON.stringify(data));
         this.weatherData.next(data)
 
       })
@@ -29,8 +29,7 @@ export class AuthService {
     console.log(body)
     return this.http.post<any>(`http://localhost:5000/api/auth/register`,body).pipe(
       tap((data) => {
-        localStorage.setItem("user", JSON.stringify(data));
-
+        this.logIn(body).subscribe(res=> console.log('user is logged-in'))
       }))
   }
 

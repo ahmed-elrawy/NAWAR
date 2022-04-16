@@ -13,8 +13,9 @@ import { ItemsComponent } from './modules/app/items/items.component';
 import { CreateItemComponent } from './modules/app/create-item/create-item.component';
 import { HomeComponent } from './modules/app/home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TokenInterceptor } from './shared/components/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
     
   ],
-  providers: [],
+  providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
