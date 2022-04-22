@@ -19,11 +19,16 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.state = localStorage.getItem(this.stateKey) as any ;
+    let accessToken
+    if(JSON.parse(this.state) && JSON.parse(this.state).accessToken){
+      accessToken= JSON.parse(this.state).accessToken 
+
+    }else{     accessToken= ''    }
 
     request = request.clone({
       setHeaders: {
         device: 'web',
-        Authorization: `Bearer ${ JSON.parse(this.state).accessToken}`,
+        Authorization: `Bearer ${ accessToken}`,
         Accept: 'application/json'
       },
     });
