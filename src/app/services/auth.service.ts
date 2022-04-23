@@ -39,4 +39,9 @@ export class AuthService {
     location.reload();
   }
 
+  user(id:string):Observable<any> {
+    console.log(id)
+   return this.http.get<any>(`http://localhost:5000/api/users/find/${id}`)
+  }
+
 }

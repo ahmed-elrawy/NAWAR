@@ -49,7 +49,7 @@ export class CreateItemComponent implements OnInit {
 
   submit(form:FormGroup){
     let data={
-      userI: '',
+      userID: JSON.parse(localStorage.getItem('state')||'')._id,
       name: form.value.name,
       desc:form.value.desc,
       ip: form.value.ip,

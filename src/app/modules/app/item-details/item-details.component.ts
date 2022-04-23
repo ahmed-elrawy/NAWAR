@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AppService } from 'src/app/services/app.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-item-details',
@@ -6,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-details.component.scss']
 })
 export class ItemDetailsComponent implements OnInit {
-
-  constructor() { }
+  data:any
+  constructor(private route: ActivatedRoute,
+              private appservice: AppService,
+              private auth:AuthService) { }
 
   ngOnInit(): void {
+
+    
+    this.route.params.subscribe(prm => {
+        console.log(prm)
+      this.appservice.Phone(prm['id']).subscribe(res => {
+        this.data =res
+        this.auth.user(res.userID).subscribe(res => console.log(res))
+        console.log(res)
+      })
+    })
   }
 
 }
