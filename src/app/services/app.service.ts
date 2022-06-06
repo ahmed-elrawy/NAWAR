@@ -15,4 +15,8 @@ export class AppService {
   Phone(id:string):Observable<any> {
     return this.http.get<any>(`http://localhost:5000/api/phone/${id}`)
   }
+
+  delete(id:string):Observable<any>{
+    return this.http.delete(`http://localhost:5000/api/phone/${id}`)
+  }
 }

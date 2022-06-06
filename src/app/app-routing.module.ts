@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminPanelComponent } from './modules/app/admin-panel/admin-panel.component';
 import { CreateItemComponent } from './modules/app/create-item/create-item.component';
 import { HomeComponent } from './modules/app/home/home.component';
 import { ItemDetailsComponent } from './modules/app/item-details/item-details.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
     component:CreateItemComponent,
     canActivate: [AuthGuard]
 
+  },{
+    path:'Admin',
+    component: AdminPanelComponent,
+    canActivate:[AuthGuard]
   }
 ];
 
