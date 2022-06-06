@@ -32,7 +32,7 @@ export class TokenInterceptor implements HttpInterceptor {
         Accept: 'application/json'
       },
     });
-    console.log(request)
+    // console.log(request)
     return next.handle(request);
   }
 }

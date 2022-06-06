@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
 
@@ -40,8 +40,11 @@ export class AuthService {
   }
 
   user(id:string):Observable<any> {
-    console.log(id)
-   return this.http.get<any>(`http://localhost:5000/api/users/find/${id}`)
+    let headers = new HttpHeaders();
+    let state =  localStorage.getItem('state')?.toString()
+
+    headers = headers.append('token', `Bearer ${JSON.parse(state+'').accessToken}`);
+   return this.http.get<any>(`http://localhost:5000/api/users/find/${id}`,{headers: headers})
   }
 
   isLoggedIn(): boolean {
@@ -49,15 +52,27 @@ export class AuthService {
     
    let state =  localStorage.getItem('state')?.toString()
    if(state&&JSON.parse(state+'').accessToken){
-   console.log( JSON.parse(state+'').accessToken);
-   
     return true;
-
    }else{
     return false;
   }
    }
    
+
+
+
+
+   update(id:string, body:any):Observable<any> {
+    let headers = new HttpHeaders();
+    let state =  localStorage.getItem('state')?.toString()
+
+    headers = headers.append('token', `Bearer ${JSON.parse(state+'').accessToken}`);
+
+
+    const D = { username: 'Angular PUT Request Example' };
+
+    return this.http.put<any>(`http://localhost:5000/api/users/${id}`,body, {headers: headers})
+   }
   
   //  ?console.log(true):console.log(false);   
    

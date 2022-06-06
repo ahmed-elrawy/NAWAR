@@ -11,7 +11,6 @@ export class HomeComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
-    this.auth.isLoggedIn()
     this.auth.weatherData.subscribe(res => {
       console.log(res)
     })
