@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   LoginForm!: FormGroup
-  constructor(private auth: AuthService,private fb: FormBuilder) { }
+  constructor(
+    private auth: AuthService,
+    private fb: FormBuilder,
+    private router:Router) { }
 
   ngOnInit(): void {
     this.LoginForm = new FormGroup({
@@ -30,9 +34,14 @@ export class LoginComponent implements OnInit {
 
     console.log(body)
     this.auth.logIn(body).subscribe(res => {
+
       console.log(res)
+      alert("you are loged in")
+      this.router.navigate(['/'])
     },(err) => {
       console.log(err)
+      alert(err.status)
+
   
     })
   }

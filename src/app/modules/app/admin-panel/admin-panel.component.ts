@@ -45,7 +45,10 @@ data?: phone[]
     })
   }
 delete(id:string) {
+  console.log(id);
+
   this.app.delete(id).subscribe(res => {
+    
     alert(res)
   })
 }

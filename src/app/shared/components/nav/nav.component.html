@@ -11,12 +11,12 @@
                   <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" routerLink="items">Items</a></li>
                     <li class="nav-item"><a class="nav-link" routerLink="details">Details</a></li>
-                    <li class="nav-item"><a class="nav-link" routerLink="profile">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link" routerLink="create">Create</a></li>
-                    <li class="nav-item"><a class="nav-link" routerLink="Admin">Admin</a></li>
+                    <li  *ngIf="auth.isLoggedIn()" class="nav-item"><a class="nav-link" routerLink="profile">Profile</a></li>
+                    <li  *ngIf="auth.isLoggedIn()" class="nav-item"><a class="nav-link" routerLink="create">Create</a></li>
+                    <li  *ngIf="auth.isLoggedIn()&&  this.auth.isAdmin()" class="nav-item"><a class="nav-link" routerLink="Admin">Admin</a></li>
                       <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#login" routerLink="register">Register</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#login"  routerLink="login">login</a></li>
+                      <li  *ngIf="!auth.isLoggedIn()" class="nav-item"><a class="nav-link" href="#login" routerLink="register">Register</a></li>
+                      <li *ngIf="!auth.isLoggedIn()" class="nav-item"><a class="nav-link" href="#login"  routerLink="login">login</a></li>
                       <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                       <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                   </ul>

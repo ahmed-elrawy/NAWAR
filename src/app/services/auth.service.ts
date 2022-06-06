@@ -48,15 +48,22 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-
-    
    let state =  localStorage.getItem('state')?.toString()
    if(state&&JSON.parse(state+'').accessToken){
     return true;
-   }else{
+     }else{
     return false;
-  }
+    }
    }
+
+   isAdmin(): boolean {
+    let state =  localStorage.getItem('state')?.toString()
+    if(state&&JSON.parse(state+'').isAdmin ==false){
+     return false;
+    }else{
+     return true;
+   }
+    }
    
 
 
