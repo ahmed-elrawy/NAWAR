@@ -48,6 +48,7 @@ delete(id:string) {
   console.log(id);
 
   this.app.delete(id).subscribe(res => {
+    console.log(res);
     
     alert(res)
   })

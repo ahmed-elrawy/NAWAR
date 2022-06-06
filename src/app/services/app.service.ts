@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {environment as env} from'../../environments/environment'
@@ -17,6 +17,10 @@ export class AppService {
   }
 
   delete(id:string):Observable<any>{
-    return this.http.delete(`http://localhost:5000/api/phone/${id}`)
+    let headers = new HttpHeaders();
+    let state =  localStorage.getItem('state')?.toString()
+
+    headers = headers.append('token', `Bearer ${JSON.parse(state+'').accessToken}`);
+    return this.http.delete(`http://localhost:5000/api/phone/${id}`,{headers: headers})
   }
 }
