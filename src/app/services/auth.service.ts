@@ -44,4 +44,22 @@ export class AuthService {
    return this.http.get<any>(`http://localhost:5000/api/users/find/${id}`)
   }
 
+  isLoggedIn(): boolean {
+
+    
+   let state =  localStorage.getItem('state')?.toString()
+   if(state&&JSON.parse(state+'').accessToken){
+   console.log( JSON.parse(state+'').accessToken);
+   
+    return true;
+
+   }else{
+    return false;
+  }
+   }
+   
+  
+  //  ?console.log(true):console.log(false);   
+   
+  
 }

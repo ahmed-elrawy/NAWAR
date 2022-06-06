@@ -16,6 +16,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from './shared/components/interceptors/token.interceptor';
+import { AdminPanelComponent } from './modules/app/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TokenInterceptor } from './shared/components/interceptors/token.interce
     ItemDetailsComponent,
     ItemsComponent,
     CreateItemComponent,
-    HomeComponent
+    HomeComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,

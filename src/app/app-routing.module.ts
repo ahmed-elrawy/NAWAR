@@ -7,6 +7,7 @@ import { ItemsComponent } from './modules/app/items/items.component';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
 import { ProfileComponent } from './modules/user/profile/profile.component';
+import { AuthGuard } from './shared/gards/auth.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component:ProfileComponent
+    component:ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'items',
@@ -31,11 +33,14 @@ const routes: Routes = [
   },
   {
     path: 'details/:id',
-    component:ItemDetailsComponent
+    component:ItemDetailsComponent,
+    canActivate: [AuthGuard]
   },
   {
   path: 'create',
-    component:CreateItemComponent
+    component:CreateItemComponent,
+    canActivate: [AuthGuard]
+
   }
 ];
 
