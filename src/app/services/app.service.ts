@@ -8,12 +8,13 @@ import {environment as env} from'../../environments/environment'
 })
 export class AppService {
   constructor(private http: HttpClient){}
-
+  API= ''
+  localhost= ""
   Phones():Observable<any> {
-    return this.http.get<any>(`http://localhost:5000/api/phone/`)
+    return this.http.get<any>(`${env.apiURL}phone/`)
   }
   Phone(id:string):Observable<any> {
-    return this.http.get<any>(`http://localhost:5000/api/phone/${id}`)
+    return this.http.get<any>(`${env.apiURL}phone/${id}`)
   }
 
   delete(id:string):Observable<any>{
@@ -21,6 +22,16 @@ export class AppService {
     let state =  localStorage.getItem('state')?.toString()
 
     headers = headers.append('token', `Bearer ${JSON.parse(state+'').accessToken}`);
-    return this.http.delete(`http://localhost:5000/api/phone/${id}`,{headers: headers})
+    return this.http.delete(`${env.apiURL}phone/${id}`,{headers: headers})
+  }
+
+  update(body:any) {
+
+
+    let headers = new HttpHeaders();
+    let state =  localStorage.getItem('state')?.toString()
+
+    headers = headers.append('token', `Bearer ${JSON.parse(state+'').accessToken}`);
+    return this.http.put(`${env.apiURL}phone/${body._id}`,body,{headers: headers})
   }
 }

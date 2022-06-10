@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
+import {environment as env} from'../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
 
 
   logIn(body:any):Observable<any> {
-    return this.http.post<any>(`http://localhost:5000/api/auth/login`,body).pipe(
+    return this.http.post<any>(`${env.apiURL}auth/login`,body).pipe(
       tap((data) => {
         localStorage.setItem("state", JSON.stringify(data));
         this.weatherData.next(data)
@@ -27,7 +28,7 @@ export class AuthService {
 
   signIn(body:any):Observable<any> {
     console.log(body)
-    return this.http.post<any>(`http://localhost:5000/api/auth/register`,body).pipe(
+    return this.http.post<any>(`${env.apiURL}auth/register`,body).pipe(
       tap((data) => {
         this.logIn(body).subscribe(res=> console.log('user is logged-in'))
       }))
