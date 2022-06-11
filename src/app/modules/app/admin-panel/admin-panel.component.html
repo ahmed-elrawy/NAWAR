@@ -1,34 +1,27 @@
 
 
-<!-- 
+
 <table class="table" style="margin-top: 100px;">
-    <caption>List of users</caption>
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">IP</th>
-        <th scope="col">Model</th>
-        <th scope="col">Name</th>
+        <th scope="col">image</th>
+        <th scope="col">color</th>
         <th scope="col">desc</th>
-        <th scope="col">img</th>
-        <th scope="col">-</th>
+        <th scope="col">ip</th>
+        <th scope="col">model</th>
+        <th scope="col">brand</th>
+        <th scope="col">status</th>
+        <th scope="col">update</th>
+        <th scope="col">delete</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let item of data;let i=index">
-        <th scope="row">{{i}}</th>
-        <td>{{item.ip}}</td>
-        <td>{{item.model}}</td>
-        <td>{{item.name}}</td>
-        <td><p>{{item.desc}}</p></td>
-        <td><img [src]="item.img.data" alt="" class="img"></td>
-        <td><button class="btn btn-danger" (click)="delete(item._id)">delete</button></td>
-      </tr>
 
-    </tbody>
-  </table> -->
+  </table>
 
-  <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()" style="margin-top: 200px">
+  
+
+
+  <form [formGroup]="skillsForm" (ngSubmit)="onSubmit()" >
 
     <div formArrayName="skills" >
       <div *ngFor="let skill of skills.controls; let i=index">
