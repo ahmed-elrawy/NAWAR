@@ -1,6 +1,27 @@
 <div style="margin-top: 150px"></div>
-<div class="container mt-5 mb-5"  >
+
+
+
+<div class="container mt-5 mb-5  "  >
+
+
+  
   <div class="d-flex justify-content-center row" >
+    <div class="col-md-10">
+      <form  [formGroup]="filterForm" class="form-inline" (ngSubmit)="submit()">
+        <div class="row" >
+          <div class="col-6 ">
+            <input formControlName="name" type="text" class="form-control" id="inputPassword2" placeholder="Password">
+          </div>
+    
+          <div class="col-6">
+            <button type="submit" class="btn btn-primary mb-2">filter by brand</button>
+          </div>
+        </div>
+    
+      </form>
+    </div>
+
       <div class="col-md-10">
           <div  *ngFor="let item of data">
             <div *ngIf="item.status ==1" class="row p-2 bg-white border rounded" >

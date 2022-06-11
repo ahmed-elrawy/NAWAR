@@ -26,12 +26,17 @@ export class AppService {
   }
 
   update(body:any) {
-
-
     let headers = new HttpHeaders();
     let state =  localStorage.getItem('state')?.toString()
 
     headers = headers.append('token', `Bearer ${JSON.parse(state+'').accessToken}`);
     return this.http.put(`${env.apiURL}phone/${body._id}`,body,{headers: headers})
+  }
+
+
+  filter(name:string) {
+  console.log(name);
+  
+    return this.http.get(`${env.apiURL}phone/filter/${name}`)
   }
 }
