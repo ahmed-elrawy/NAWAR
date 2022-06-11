@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ItemDetailsComponent implements OnInit {
   data:any
+  user: any
   constructor(private route: ActivatedRoute,
               private appservice: AppService,
               private auth:AuthService) { }
@@ -21,7 +22,10 @@ export class ItemDetailsComponent implements OnInit {
         console.log(prm)
       this.appservice.Phone(prm['id']).subscribe(res => {
         this.data =res
-        this.auth.user(res.userID).subscribe(res => console.log(res))
+        this.auth.user(res.userID).subscribe(res => {
+          this.user = res
+          console.log(res)
+        })
         console.log(res)
       })
     })

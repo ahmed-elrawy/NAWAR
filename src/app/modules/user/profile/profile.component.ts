@@ -18,6 +18,8 @@ export class ProfileComponent implements OnInit {
       
       this.auth.user(JSON.parse(localStorage.getItem('state')+'')._id).subscribe(res => {
         this.user = res
+        console.log(this.user);
+        
         this.form = this.fb.group({
           email:res.email,
           phone: res.phone,

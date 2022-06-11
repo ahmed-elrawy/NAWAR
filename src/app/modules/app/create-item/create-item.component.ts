@@ -60,7 +60,7 @@ export class CreateItemComponent implements OnInit {
     console.log(form.controls)
     this.imageService.uploadImage(this.file as File, data).subscribe(
       (res:any) => {
-        alert(res.status)
+        alert("post is created")
       console.log(res)
       },
       (err:any) => {
